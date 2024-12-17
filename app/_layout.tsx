@@ -52,7 +52,12 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen 
+          name="brand/[name]" 
+          options={({ route }) => ({
+            title: route.params?.name ? String(route.params.name).toUpperCase() : 'Brand',
+          })}
+        />
       </Stack>
     </ThemeProvider>
   );
